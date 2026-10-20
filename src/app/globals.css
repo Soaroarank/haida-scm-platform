@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 224 71.4% 4.1%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+    --primary: 221 100% 41%; /* SAP Blue #0064d2 */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+    
+    /* SAP Specific Colors */
+    --sap-shell-color: 210 28% 29%; /* #354a5f */
+    --sap-background: 210 17% 95%; /* #f0f2f5 */
+    --sap-tile-bg: 0 0% 100%;
+  }
+
+  .dark {
+    --background: 222 24% 12%; /* #1d232a */
+    --foreground: 210 40% 98%;
+    --card: 222 24% 12%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 24% 12%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217 33% 18%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 18%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 217 33% 18%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 33% 18%;
+    --input: 217 33% 18%;
+    --ring: 224 76% 48%;
+  }
+}
+
+@layer components {
+  /* SAP Fiori Horizon UI System */
+  .sap-container {
+    @apply flex h-screen w-screen overflow-hidden bg-[#f0f2f5] dark:bg-[#12171c];
+  }
+
+  .sap-shell-bar {
+    @apply h-12 bg-[#354a5f] text-white flex items-center px-4 justify-between sticky top-0 z-50 shadow-md shrink-0;
+  }
+
+  .sap-sidebar {
+    @apply w-[64px] hover:w-64 bg-white dark:bg-[#1d232a] border-r border-gray-200 dark:border-gray-800 flex flex-col transition-all duration-300 z-40 shadow-sm shrink-0;
+  }
+
+  .sap-main {
+    @apply flex-1 flex flex-col min-w-0 h-full overflow-hidden;
+  }
+
+  .sap-content {
+    @apply flex-1 overflow-y-auto p-4 space-y-4;
+  }
+
+  /* SAP Fiori Tiles */
+  .sap-tile {
+    @apply bg-white dark:bg-[#1d232a] border border-gray-200 dark:border-gray-800 rounded-lg p-4 shadow-sm hover:shadow-md hover:border-blue-500/50 transition-all cursor-pointer flex flex-col justify-between h-44 aspect-square;
+  }
+
+  .sap-tile-header {
+    @apply text-sm font-semibold text-gray-700 dark:text-gray-200 leading-tight;
+  }
+
+  .sap-tile-content {
+    @apply flex flex-col justify-end h-full mt-2;
+  }
+
+  .sap-tile-number {
+    @apply text-3xl font-light text-blue-600 dark:text-blue-400;
+  }
+
+  .sap-tile-footer {
+    @apply text-[11px] text-gray-500 dark:text-gray-400 mt-2;
+  }
+
+  /* SAP Object Page Patterns */
+  .sap-object-header {
+    @apply bg-white dark:bg-[#1d232a] border-b border-gray-200 dark:border-gray-800 p-6 shadow-sm mb-4 rounded-b-lg;
+  }
+
+  .sap-section-card {
+    @apply bg-white dark:bg-[#1d232a] border border-gray-200 dark:border-gray-800 rounded-lg shadow-sm p-6 overflow-hidden;
+  }
+
+  .sap-table {
+    @apply w-full border-collapse text-sm;
+  }
+
+  .sap-table th {
+    @apply bg-gray-50 dark:bg-gray-800/50 text-[11px] font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider py-3 px-4 text-left border-b border-gray-200 dark:border-gray-800;
+  }
+
+  .sap-table td {
+    @apply py-3 px-4 border-b border-gray-100 dark:border-gray-800/50 text-gray-700 dark:text-gray-300;
+  }
+
+  .sap-table tr:hover {
+    @apply bg-blue-50/30 dark:bg-blue-900/10 cursor-pointer;
+  }
+
+  /* SAP Form Fields */
+  .sap-input {
+    @apply w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded px-3 py-1.5 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all;
+  }
+
+  .sap-button-primary {
+    @apply bg-[#0064d2] hover:bg-[#005bb8] text-white px-4 py-1.5 rounded text-sm font-semibold transition-all shadow-sm active:scale-[0.98];
+  }
+
+  .sap-button-ghost {
+    @apply bg-transparent hover:bg-gray-100 dark:hover:bg-gray-800 text-[#0064d2] dark:text-blue-400 px-4 py-1.5 rounded text-sm font-semibold transition-all;
+  }
+}
+
+/* Custom Scrollbar Utilities */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-700 rounded-full;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-gray-600;
+}
+
+/* Glassmorphism utility */
+.glass {
+  @apply bg-white/70 dark:bg-black/70 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-xl;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-[#f0f2f5] text-[#32363a] antialiased;
+    font-family: "72", "72full", Arial, Helvetica, sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-[#32363a] dark:text-white;
+  }
+}
+
+.high-density-table td, 
+.high-density-table th {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+.war-room-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+}
